@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FootballClub.iml" filepath="$PROJECT_DIR$/FootballClub.iml" />
+      <module fileurl="file://E:\Ahmad Dudayef\Project Latihan\Kotlin Developer Expert By Dicoding\FootballClubDicoding\FootballClub.iml" filepath="E:\Ahmad Dudayef\Project Latihan\Kotlin Developer Expert By Dicoding\FootballClubDicoding\FootballClub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FootballClubDicoding.iml" filepath="$PROJECT_DIR$/FootballClubDicoding.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Ahmad Dudayef\Project Latihan\Kotlin Developer Expert By Dicoding\FootballClubDicoding\app\app.iml" filepath="E:\Ahmad Dudayef\Project Latihan\Kotlin Developer Expert By Dicoding\FootballClubDicoding\app\app.iml" />
     </modules>
   </component>
 </project>

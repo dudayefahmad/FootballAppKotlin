@@ -102,4 +102,6 @@ class MainActivity : AppCompatActivity(), MainView {
         adapter.notifyDataSetChanged()
     }
 
+    //test cuy
+
 }
