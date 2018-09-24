@@ -1,4 +1,4 @@
-package com.ahmaddudayef.footballclub.model
+package com.ahmaddudayef.footballclub.test.model
 
 /**
  * Created by Ahmad Dudayef on 9/8/2018.
