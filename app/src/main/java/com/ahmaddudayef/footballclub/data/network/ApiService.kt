@@ -1,7 +1,9 @@
 package com.ahmaddudayef.footballclub.data.network
 
+import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.test.model.TeamResponse
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -22,4 +24,7 @@ interface ApiService {
 
     @GET("lookupteam.php")
     fun getDetailTeam(@Query("id") id: String): Single<TeamResponse>
+
+    @GET("all_leagues.php")
+    fun getAllLeagues() : Single<Leagues>
 }

@@ -33,6 +33,11 @@ class NextMatchAdapter(private val events: MutableList<EventsItem>?):
         }
     }
 
+    fun clearItems() {
+        events?.clear()
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return events?.size ?: 0
     }

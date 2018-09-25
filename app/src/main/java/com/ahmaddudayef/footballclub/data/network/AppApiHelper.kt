@@ -1,5 +1,6 @@
 package com.ahmaddudayef.footballclub.data.network
 
+import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.test.model.TeamResponse
 import io.reactivex.Observable
@@ -27,6 +28,10 @@ class AppApiHelper @Inject constructor(
 
     override fun getDetailTeam(idTeam: String): Single<TeamResponse> {
         return apiService.getDetailTeam(idTeam)
+    }
+
+    override fun getAllLeagues(): Single<Leagues> {
+        return apiService.getAllLeagues()
     }
 
 }
