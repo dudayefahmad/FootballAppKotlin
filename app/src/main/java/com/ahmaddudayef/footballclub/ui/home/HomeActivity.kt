@@ -53,12 +53,11 @@ class HomeActivity: BaseActivity(), HomeMvpView, HasSupportFragmentInjector {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        viewPager.offscreenPageLimit = 1
+        viewPager.offscreenPageLimit = 3
         viewPager.adapter = viewPagerAdapter
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
-
-        bottomNavigationView.setOnNavigationItemSelectedListener({
+        bottomNavigationView.setOnNavigationItemSelectedListener{
             when (it.itemId) {
                 R.id.next_match -> {
                     viewPager.setCurrentItem(0, true)
@@ -68,9 +67,13 @@ class HomeActivity: BaseActivity(), HomeMvpView, HasSupportFragmentInjector {
                     viewPager.setCurrentItem(1, true)
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.favorite_match -> {
+                    viewPager.setCurrentItem(2, true)
+                    return@setOnNavigationItemSelectedListener true
+                }
             }
             false
-        })
+        }
 
         viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -87,10 +90,6 @@ class HomeActivity: BaseActivity(), HomeMvpView, HasSupportFragmentInjector {
         })
 
         bottomNavigationView.selectedItemId = R.id.next_match
-    }
-
-    override fun changeFragment(fragment: String) {
-
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {

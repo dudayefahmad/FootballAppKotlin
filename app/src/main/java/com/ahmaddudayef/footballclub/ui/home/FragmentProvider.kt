@@ -1,5 +1,7 @@
 package com.ahmaddudayef.footballclub.ui.home
 
+import com.ahmaddudayef.footballclub.ui.favorite.FavoriteFragment
+import com.ahmaddudayef.footballclub.ui.favorite.FavoriteModule
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchModule
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
@@ -18,4 +20,7 @@ abstract class FragmentProvider {
 
     @ContributesAndroidInjector(modules = [(PrevMatchModule::class)])
     internal abstract fun providePrevMatchFragmentFactory(): PrevMatchFragment
+
+    @ContributesAndroidInjector(modules = [(FavoriteModule::class)])
+    internal abstract fun provideFavoriteFragmentFactory(): FavoriteFragment
 }

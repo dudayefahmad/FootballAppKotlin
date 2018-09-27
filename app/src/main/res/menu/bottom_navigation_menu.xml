@@ -8,4 +8,8 @@
         android:id="@+id/prev_match"
         android:icon="@drawable/ic_beenhere_black_24dp"
         android:title="Prev Match" />
+    <item
+        android:id="@+id/favorite_match"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="Favorite Match" />
 </menu>

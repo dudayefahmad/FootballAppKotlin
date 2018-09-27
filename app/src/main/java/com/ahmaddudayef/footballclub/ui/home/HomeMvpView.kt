@@ -6,6 +6,4 @@ import com.ahmaddudayef.footballclub.ui.base.MvpView
 /**
  * Created by Ahmad Dudayef on 9/16/2018.
  */
-interface HomeMvpView: MvpView{
-    fun changeFragment(fragment: String)
-}
+interface HomeMvpView: MvpView
