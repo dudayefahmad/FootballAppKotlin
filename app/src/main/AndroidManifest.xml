@@ -24,11 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.detail.DetailMatchActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ui.home.HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

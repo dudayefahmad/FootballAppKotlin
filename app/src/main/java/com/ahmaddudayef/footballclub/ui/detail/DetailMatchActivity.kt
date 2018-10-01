@@ -3,6 +3,7 @@ package com.ahmaddudayef.footballclub.ui.detail
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.ahmaddudayef.footballclub.R
@@ -76,5 +77,15 @@ class DetailMatchActivity : BaseActivity(), DetailMatchMvpView{
     override fun onDestroy() {
         presenter.onDetach()
         super.onDestroy()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
