@@ -69,9 +69,6 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:${versions.glide}"
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${versions.rxbinding}"
     debugImplementation "com.amitshekhar.android:debug-db:${versions.debug_db}"
-    implementation "android.arch.persistence.room:runtime:${versions.archComponents}"
-    kapt "android.arch.persistence.room:compiler:${versions.archComponents}"
-    implementation "android.arch.persistence.room:rxjava2:${versions.archComponents}"
     implementation "com.android.support:customtabs:${versions.supportLibrary}"
     implementation "com.github.franmontiel:AttributionPresenter:${versions.attributionPresenter}"
     implementation "org.sufficientlysecure:html-textview:${versions.htmlTextview}"
@@ -83,6 +80,7 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$versions.anko_version"
     implementation "org.jetbrains.anko:anko-design:$versions.anko_version"
     implementation "org.jetbrains.anko:anko-cardview-v7:$versions.anko_version"
+    implementation "org.jetbrains.anko:anko-sqlite:$versions.anko_version"
 
 // RecyclerView-v7
     implementation "org.jetbrains.anko:anko-recyclerview-v7:$versions.anko_version"
