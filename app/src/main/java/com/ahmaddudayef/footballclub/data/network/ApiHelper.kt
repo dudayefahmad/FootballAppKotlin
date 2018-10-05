@@ -4,6 +4,7 @@ import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.test.model.Team
 import com.ahmaddudayef.footballclub.test.model.TeamResponse
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -20,4 +21,6 @@ interface ApiHelper {
     fun getDetailTeam(idTeam: String): Single<TeamResponse>
 
     fun getAllLeagues(): Single<Leagues>
+
+    fun getMatchById(id: String): Flowable<Events>
 }

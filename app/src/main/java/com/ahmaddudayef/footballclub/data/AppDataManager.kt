@@ -4,6 +4,7 @@ import com.ahmaddudayef.footballclub.data.network.AppApiHelper
 import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.test.model.TeamResponse
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -33,6 +34,10 @@ class AppDataManager @Inject constructor(
 
     override fun getAllLeagues(): Single<Leagues> {
         return appApiHelper.getAllLeagues()
+    }
+
+    override fun getMatchById(id: String): Flowable<Events> {
+        return appApiHelper.getMatchById(id)
     }
 
 }

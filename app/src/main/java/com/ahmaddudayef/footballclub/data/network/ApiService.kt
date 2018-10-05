@@ -27,4 +27,7 @@ interface ApiService {
 
     @GET("all_leagues.php")
     fun getAllLeagues() : Single<Leagues>
+
+    @GET("lookupevent.php")
+    fun getMatchById(@Query("id") id: String): Flowable<Events>
 }
