@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
+import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchItem
 import kotlinx.android.synthetic.main.activity_detail.view.*
 import org.jetbrains.anko.*
@@ -21,7 +22,14 @@ import org.jetbrains.anko.*
  */
 class FavoriteAdapter(private var matchFavorit: List<EventsItem>): RecyclerView.Adapter<FavoriteAdapter.FavMatchHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = FavMatchHolder(FavMatchItem().createView(AnkoContext.Companion.create(parent.context, parent)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavMatchHolder {
+        val viewHolder = FavMatchHolder(FavMatchItem().createView(AnkoContext.Companion.create(parent.context, parent)))
+        viewHolder.itemView.setOnClickListener{
+            val position = viewHolder.adapterPosition
+            parent.context.startActivity< DetailMatchActivity>("match_detail" to matchFavorit[position])
+        }
+        return viewHolder
+    }
 
     override fun getItemCount(): Int = matchFavorit.size
 

@@ -50,7 +50,7 @@ class FavoriteFragment : BaseFragment(), FavoriteMvpView {
     }
 
     override fun setUp(view: View) {
-        listFavMatch.layoutManager = LinearLayoutManager(context)
+        listFavMatch.layoutManager = linearLayoutManager
         listFavMatch.adapter = adapter
         swipeRefresh.setOnRefreshListener { getFavoriteFromDb() }
         swipeRefresh.post{

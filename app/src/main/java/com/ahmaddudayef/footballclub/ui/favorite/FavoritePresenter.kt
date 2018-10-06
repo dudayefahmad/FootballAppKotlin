@@ -1,13 +1,12 @@
 package com.ahmaddudayef.footballclub.ui.favorite
 
 import android.content.Context
+import android.util.Log
 import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.data.db.database
 import com.ahmaddudayef.footballclub.data.db.entities.MatchEntity
-import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
+
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
-import com.ahmaddudayef.footballclub.ui.home.HomeMvpPresenter
-import com.ahmaddudayef.footballclub.ui.home.HomeMvpView
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -36,23 +35,24 @@ class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
     }
 
     override fun getNextMatch(context: Context?) {
-        mvpView?.showLoading()
         compositeDisposable.add(
                 getMatchFavorite(context)
                         .flattenAsFlowable { it }
-                        .flatMap { dataManager.getMatchById(it.eventId.toString()) }
+                        .flatMap {
+                            dataManager.getMatchById(it.eventId.toString())
+                        }
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({results ->
                             if (!isViewAttached())
                                 return@subscribe
-                            mvpView?.hideLoading()
-                            if (results.events != null){
-                                mvpView?.showMatchFavorite(results)
-                            }
+                            Log.d("Masuk sini", "1")
+
+                            mvpView?.showMatchFavorite(results)
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe
+                            Log.d("Masuk sini", "2")
                             mvpView?.hideLoading()
                             mvpView?.showMessage(throwable.message!!)
                             Timber.e(throwable.message)
