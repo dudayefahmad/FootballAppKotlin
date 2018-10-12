@@ -5,6 +5,7 @@ import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.utils.rx.TestSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.TestScheduler
+import kotlinx.coroutines.experimental.launch
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,19 +18,18 @@ import org.mockito.junit.MockitoJUnitRunner
 /**
  * Created by Ahmad Dudayef on 10/12/2018.
  */
-@RunWith(MockitoJUnitRunner::class)
 class NextPresenterTest {
     @Mock
     private lateinit var view: NextMvpView
     @Mock
     private lateinit var dataManager: DataManager
-    @Mock
+
     private lateinit var compositeDisposable: CompositeDisposable
-    @Mock
+
     private lateinit var presenter: NextPresenter<NextMvpView>
-    @Mock
+
     private lateinit var testScheduler: TestScheduler
-    @Mock
+
     private lateinit var testSchedulerProvider: TestSchedulerProvider
     @Mock
     private lateinit var eventItem: Events
@@ -46,11 +46,10 @@ class NextPresenterTest {
 
     @Test
     fun getNextScheduleList() {
-        verify(view)?.showLoading()
+        launch { verify(view).showLoading() }
         presenter.getNextScheduleList("4328")
-
-        verify(view)?.updateList(eventItem.events!!)
-        verify(view)?.hideLoading()
+        launch { verify(view)?.updateList(eventItem.events!!) }
+        launch { verify(view)?.hideLoading() }
     }
 
     @After
