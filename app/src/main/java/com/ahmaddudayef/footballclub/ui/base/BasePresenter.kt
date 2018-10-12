@@ -1,6 +1,7 @@
 package com.ahmaddudayef.footballclub.ui.base
 
 import com.ahmaddudayef.footballclub.data.DataManager
+import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.HttpException
 import javax.inject.Inject
@@ -10,7 +11,8 @@ import javax.inject.Inject
  */
 open class BasePresenter<V: MvpView> @Inject constructor(
         private val dataManager: DataManager,
-        private val compositeDisposable: CompositeDisposable
+        private val compositeDisposable: CompositeDisposable,
+        private val schedulerProvider: SchedulerProvider
 ): MvpPresenter<V> {
 
     var mvpView: V? = null
@@ -30,6 +32,10 @@ open class BasePresenter<V: MvpView> @Inject constructor(
 
     fun checkViewAttached() {
         if (!isViewAttached()) throw MvpViewNotAttachedException()
+    }
+
+    fun getSchedulerProvider(): SchedulerProvider {
+        return schedulerProvider
     }
 
     class MvpViewNotAttachedException :

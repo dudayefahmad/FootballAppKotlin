@@ -7,6 +7,7 @@ import com.ahmaddudayef.footballclub.data.db.database
 import com.ahmaddudayef.footballclub.data.db.entities.MatchEntity
 
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
+import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,8 +22,9 @@ import javax.inject.Inject
  */
 class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
         private val dataManager: DataManager,
-        private val compositeDisposable: CompositeDisposable
-): BasePresenter<V>(dataManager, compositeDisposable), FavoriteMvpPresenter<V>{
+        private val compositeDisposable: CompositeDisposable,
+        private val subscriber: AppSchedulerProvider
+): BasePresenter<V>(dataManager, compositeDisposable, subscriber), FavoriteMvpPresenter<V>{
 
     override fun getMatchFavorite(context: Context?): Single<List<MatchEntity>> {
         lateinit var favoriteList: List<MatchEntity>
@@ -41,8 +43,8 @@ class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
                         .flatMap {
                             dataManager.getMatchById(it.eventId.toString())
                         }
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(subscriber.io())
+                        .observeOn(subscriber.mainThread())
                         .subscribe({results ->
                             if (!isViewAttached())
                                 return@subscribe

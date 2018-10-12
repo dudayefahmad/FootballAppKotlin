@@ -13,6 +13,8 @@ import com.ahmaddudayef.footballclub.data.network.ApiHelper
 import com.ahmaddudayef.footballclub.data.network.AppApiHelper
 import com.ahmaddudayef.footballclub.di.ApplicationContext
 import com.ahmaddudayef.footballclub.di.BaseUrl
+import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
+import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -38,6 +40,11 @@ class ApplicationModule {
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable {
         return CompositeDisposable()
+    }
+
+    @Provides
+    internal fun provideSchedulerProvider(): AppSchedulerProvider {
+        return AppSchedulerProvider()
     }
 
     @Provides

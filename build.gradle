@@ -4,6 +4,7 @@ buildscript {
     ext.versions = [
             'kotlin_version'      : '1.2.71',
             'anko_version'        : '0.10.5',
+            'coroutines_version'  : '0.25.3',
             'compileSdk'          : 27,//
             'targetSdk'           : 27,//
             'buildTools'          : '27.0.3',//

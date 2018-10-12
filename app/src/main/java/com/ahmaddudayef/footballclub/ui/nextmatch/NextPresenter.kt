@@ -3,6 +3,8 @@ package com.ahmaddudayef.footballclub.ui.nextmatch
 import android.util.Log
 import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
+import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
+import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -14,15 +16,16 @@ import javax.inject.Inject
  */
 class NextPresenter<V: NextMvpView> @Inject constructor(
         private val dataManager: DataManager,
-        private val compositeDisposable: CompositeDisposable
-): BasePresenter<V>(dataManager, compositeDisposable), NextMvpPresenter<V> {
+        private val compositeDisposable: CompositeDisposable,
+        private val subscriber: AppSchedulerProvider
+): BasePresenter<V>(dataManager, compositeDisposable, subscriber), NextMvpPresenter<V> {
 
     override fun getNextScheduleList(leagueId: String) {
         mvpView?.showLoading()
         compositeDisposable.add(
                 dataManager.getNextSchedule(leagueId)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(subscriber.io())
+                        .observeOn(subscriber.mainThread())
                         .subscribe({ results ->
                             if (!isViewAttached())
                                 return@subscribe
@@ -47,8 +50,8 @@ class NextPresenter<V: NextMvpView> @Inject constructor(
         mvpView?.showLoading()
         compositeDisposable.add(
                 dataManager.getAllLeagues()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(subscriber.io())
+                        .observeOn(subscriber.mainThread())
                         .subscribe({ results ->
                             if (!isViewAttached())
                                 return@subscribe

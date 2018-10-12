@@ -8,6 +8,7 @@ import com.ahmaddudayef.footballclub.data.db.entities.MatchEntity
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
 import com.ahmaddudayef.footballclub.test.model.TeamResponse
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
+import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,8 +24,9 @@ import javax.inject.Inject
  */
 class DetailMatchPresenter<V: DetailMatchMvpView> @Inject constructor(
         private val dataManager: DataManager,
-        private val compositeDisposable: CompositeDisposable
-): BasePresenter<V>(dataManager, compositeDisposable), DetailMatchMvpPresenter<V> {
+        private val compositeDisposable: CompositeDisposable,
+        private val subscriber: AppSchedulerProvider
+): BasePresenter<V>(dataManager, compositeDisposable, subscriber), DetailMatchMvpPresenter<V> {
 
     override fun getTeamsBadge(homeBadge: String, awayBadge: String) {
         mvpView?.showLoading()
@@ -35,8 +37,8 @@ class DetailMatchPresenter<V: DetailMatchMvpView> @Inject constructor(
                         BiFunction<TeamResponse, TeamResponse, List<String>> { t1, t2 ->
                             listOf(t1.teams[0].teamBadge!!, t2.teams[0].teamBadge!!)
                         })
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(subscriber.io())
+                        .observeOn(subscriber.mainThread())
                         .subscribe({ logoClub ->
                             run {
                                 if (!isViewAttached())
