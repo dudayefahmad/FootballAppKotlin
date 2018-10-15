@@ -7,15 +7,25 @@ import io.reactivex.schedulers.TestScheduler
 /**
  * Created by Ahmad Dudayef on 10/12/2018.
  */
-class TestSchedulerProvider(var mTestScheduler: TestScheduler) : AppSchedulerProvider() {
-    override fun mainThread(): Scheduler = mTestScheduler
+class TestSchedulerProvider: SchedulerProvider {
+    override fun mainThread(): Scheduler {
+        return Schedulers.trampoline()
+    }
 
-    override fun computation(): Scheduler = mTestScheduler
+    override fun computation(): Scheduler {
+        return Schedulers.trampoline()
+    }
 
-    override fun trampoline(): Scheduler = mTestScheduler
+    override fun trampoline(): Scheduler {
+        return Schedulers.trampoline()
+    }
 
-    override fun newThread(): Scheduler = mTestScheduler
+    override fun newThread(): Scheduler {
+        return Schedulers.trampoline()
+    }
 
-    override fun io(): Scheduler = mTestScheduler
+    override fun io(): Scheduler {
+        return Schedulers.trampoline()
+    }
 
 }

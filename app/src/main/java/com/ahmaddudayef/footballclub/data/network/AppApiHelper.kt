@@ -2,7 +2,7 @@ package com.ahmaddudayef.footballclub.data.network
 
 import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
-import com.ahmaddudayef.footballclub.test.model.TeamResponse
+import com.ahmaddudayef.footballclub.data.network.model.team.TeamResponse
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single

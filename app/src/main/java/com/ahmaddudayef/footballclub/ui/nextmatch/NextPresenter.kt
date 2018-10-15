@@ -17,7 +17,7 @@ import javax.inject.Inject
 class NextPresenter<V: NextMvpView> @Inject constructor(
         private val dataManager: DataManager,
         private val compositeDisposable: CompositeDisposable,
-        private val subscriber: AppSchedulerProvider
+        private val subscriber: SchedulerProvider
 ): BasePresenter<V>(dataManager, compositeDisposable, subscriber), NextMvpPresenter<V> {
 
     override fun getNextScheduleList(leagueId: String) {

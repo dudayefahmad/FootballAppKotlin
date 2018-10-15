@@ -4,6 +4,7 @@ import android.renderscript.BaseObj
 import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
 import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
+import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class PrevPresenter<V: PrevMvpView> @Inject constructor(
         private val dataManager: DataManager,
         private val compositeDisposable: CompositeDisposable,
-        private val subscriber: AppSchedulerProvider
+        private val subscriber: SchedulerProvider
 ): BasePresenter<V>(dataManager, compositeDisposable, subscriber), PrevMvpPresenter<V> {
 
     override fun getPrevScheduleList(leagueId: String) {

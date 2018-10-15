@@ -1,4 +1,4 @@
-package com.ahmaddudayef.footballclub.test.model
+package com.ahmaddudayef.footballclub.data.network.model.team
 
 import com.google.gson.annotations.SerializedName
 

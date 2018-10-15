@@ -1,6 +1,7 @@
 package com.ahmaddudayef.footballclub.ui.base
 
 import com.ahmaddudayef.footballclub.data.DataManager
+import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.HttpException

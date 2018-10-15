@@ -43,7 +43,7 @@ class ApplicationModule {
     }
 
     @Provides
-    internal fun provideSchedulerProvider(): AppSchedulerProvider {
+    internal fun provideSchedulerProvider(): SchedulerProvider {
         return AppSchedulerProvider()
     }
 

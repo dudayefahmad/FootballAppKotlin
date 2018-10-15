@@ -1,7 +1,5 @@
 package com.ahmaddudayef.footballclub.ui.detail
 
-import com.ahmaddudayef.footballclub.test.model.Team
-import com.ahmaddudayef.footballclub.test.model.TeamResponse
 import com.ahmaddudayef.footballclub.ui.base.MvpView
 
 /**

@@ -6,14 +6,12 @@ import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.data.db.database
 import com.ahmaddudayef.footballclub.data.db.entities.MatchEntity
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
-import com.ahmaddudayef.footballclub.test.model.TeamResponse
+import com.ahmaddudayef.footballclub.data.network.model.team.TeamResponse
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
-import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
+import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import timber.log.Timber
@@ -25,7 +23,7 @@ import javax.inject.Inject
 class DetailMatchPresenter<V: DetailMatchMvpView> @Inject constructor(
         private val dataManager: DataManager,
         private val compositeDisposable: CompositeDisposable,
-        private val subscriber: AppSchedulerProvider
+        private val subscriber: SchedulerProvider
 ): BasePresenter<V>(dataManager, compositeDisposable, subscriber), DetailMatchMvpPresenter<V> {
 
     override fun getTeamsBadge(homeBadge: String, awayBadge: String) {
