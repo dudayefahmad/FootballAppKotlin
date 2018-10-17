@@ -27,19 +27,33 @@ class HomeActivityTest {
 
     @Test
     fun testRecyclerViewBehaviour() {
+        delay()
         onView(withId(spinnerNextMatch))
                 .check(matches(isDisplayed()))
+        delay()
         onView(withId(spinnerNextMatch)).perform(click())
+        delay()
         onView(withText("Italian Serie A")).perform(click())
-
+        delay()
         onView(withText("Juventus"))
                 .check(matches(isDisplayed()))
+        delay()
         onView(withText("Juventus")).perform(click())
-
+        delay()
         onView(withId(favorite))
                 .check(matches(isDisplayed()))
+        delay()
         onView(withId(favorite)).perform(click())
+        delay()
         pressBack()
+    }
+
+    private fun delay(){
+        try {
+            Thread.sleep(3000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
     }
 
 }

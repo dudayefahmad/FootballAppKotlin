@@ -1,12 +1,15 @@
 package com.ahmaddudayef.footballclub.ui.nextmatch
 
 import com.ahmaddudayef.footballclub.data.DataManager
+import com.ahmaddudayef.footballclub.data.network.model.league.League
+import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
 import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import com.ahmaddudayef.footballclub.utils.rx.TestSchedulerProvider
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.TestScheduler
 import kotlinx.coroutines.experimental.launch
@@ -40,7 +43,13 @@ class NextPresenterTest {
 
     private lateinit var eventItem: Events
 
+    lateinit var league: Single<Leagues>
+
+    private lateinit var leagues: Leagues
+
     private val event = mutableListOf<EventsItem>()
+
+    private val listLeagues = mutableListOf<League>()
 
     @Before
     fun setUp() {
@@ -48,10 +57,13 @@ class NextPresenterTest {
         compositeDisposable = CompositeDisposable()
         scheduler = TestSchedulerProvider()
         eventItem = Events(event)
+        leagues = Leagues(listLeagues)
         match = Observable.just(eventItem)
+        league = Single.just(leagues)
         presenter = NextPresenter(dataManager, compositeDisposable, scheduler)
         `when`(dataManager.getNextSchedule("4328")).thenReturn(match)
-//        presenter.onAttach(view)
+        `when`(dataManager.getAllLeagues()).thenReturn(league)
+        presenter.onAttach(view)
     }
 
     @Test
@@ -62,9 +74,17 @@ class NextPresenterTest {
         launch { verify(view).hideLoading() }
     }
 
-//    @After
-//    @Throws(Exception::class)
-//    fun tearDown() {
-//        presenter.onDetach()
-//    }
+    @Test
+    fun testGetAllLeagues() {
+        presenter.getAllLeagues()
+        launch { verify(view).showLoading() }
+        launch { verify(view).updateLeagueid(leagues) }
+        launch { verify(view).hideLoading() }
+    }
+
+    @After
+    @Throws(Exception::class)
+    fun tearDown() {
+        presenter.onDetach()
+    }
 }
