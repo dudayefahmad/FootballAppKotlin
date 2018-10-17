@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.ahmaddudayef.footballclub.ui.favorite.FavoriteFragment
+import com.ahmaddudayef.footballclub.ui.matches.MatchFragment
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
 
@@ -14,9 +15,8 @@ class ViewPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdap
 
     override fun getItem(position: Int): Fragment? {
         return when (position){
-            0 -> NextMatchFragment.newInstance()
-            1 -> PrevMatchFragment.newInstance()
-            2 -> FavoriteFragment.newInstance()
+            0 -> MatchFragment.newInstance()
+            1 -> FavoriteFragment.newInstance()
             else -> null
         }
     }
@@ -26,7 +26,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdap
     }
 
     override fun getCount(): Int {
-        return 3
+        return 2
     }
 
 }
