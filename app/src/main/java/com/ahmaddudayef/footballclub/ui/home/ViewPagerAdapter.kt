@@ -7,6 +7,7 @@ import com.ahmaddudayef.footballclub.ui.favorite.FavoriteFragment
 import com.ahmaddudayef.footballclub.ui.matches.MatchFragment
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
+import com.ahmaddudayef.footballclub.ui.teams.TeamFragment
 
 /**
  * Created by Ahmad Dudayef on 9/17/2018.
@@ -16,7 +17,8 @@ class ViewPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdap
     override fun getItem(position: Int): Fragment? {
         return when (position){
             0 -> MatchFragment.newInstance()
-            1 -> FavoriteFragment.newInstance()
+            1 -> TeamFragment.newInstance()
+            2 -> FavoriteFragment.newInstance()
             else -> null
         }
     }
@@ -26,7 +28,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdap
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 
 }

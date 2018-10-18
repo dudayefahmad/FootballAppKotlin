@@ -33,7 +33,7 @@ class DetailMatchPresenter<V: DetailMatchMvpView> @Inject constructor(
                         dataManager.getDetailTeam(homeBadge),
                         dataManager.getDetailTeam(awayBadge),
                         BiFunction<TeamResponse, TeamResponse, List<String>> { t1, t2 ->
-                            listOf(t1.teams[0].teamBadge!!, t2.teams[0].teamBadge!!)
+                            listOf(t1.teams[0].strTeamBadge, t2.teams[0].strTeamBadge)
                         })
                         .subscribeOn(subscriber.io())
                         .observeOn(subscriber.mainThread())

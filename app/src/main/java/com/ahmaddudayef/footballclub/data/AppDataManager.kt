@@ -40,4 +40,8 @@ class AppDataManager @Inject constructor(
         return appApiHelper.getMatchById(id)
     }
 
+    override fun getAllTeams(id: String): Flowable<TeamResponse> {
+        return appApiHelper.getAllTeams(id)
+    }
+
 }

@@ -1,44 +1,35 @@
-package com.ahmaddudayef.footballclub.ui.nextmatch
+package com.ahmaddudayef.footballclub.ui.teams
 
-import android.util.Log
 import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
-import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Created by Ahmad Dudayef on 9/17/2018.
+ * Created by Ahmad Dudayef on 10/17/2018.
  */
-class NextPresenter<V: NextMvpView> @Inject constructor(
+class TeamPresenter<V: TeamMvpView> @Inject constructor(
         private val dataManager: DataManager,
         private val compositeDisposable: CompositeDisposable,
         private val subscriber: SchedulerProvider
-): BasePresenter<V>(dataManager, compositeDisposable, subscriber), NextMvpPresenter<V> {
+): BasePresenter<V>(dataManager, compositeDisposable, subscriber), TeamMvpPresenter<V> {
 
-    override fun getNextScheduleList(leagueId: String) {
+    override fun getTeamList(leagueId: String) {
         mvpView?.showLoading()
         compositeDisposable.add(
-                dataManager.getNextSchedule(leagueId)
+                dataManager.getAllTeams(leagueId)
                         .subscribeOn(subscriber.io())
                         .observeOn(subscriber.mainThread())
                         .subscribe({ results ->
                             if (!isViewAttached())
                                 return@subscribe
                             mvpView?.hideLoading()
-                            if (results.events != null){
-                                var data = results.events!!.size
-                                Log.d("Data size = ", data.toString())
-                                mvpView?.updateList(results.events!!)
-                            }
+                            mvpView?.updateListTeam(results.teams)
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe
-
                             mvpView?.hideLoading()
                             mvpView?.showMessage(throwable.message!!)
                             Timber.e(throwable.message)
@@ -52,15 +43,14 @@ class NextPresenter<V: NextMvpView> @Inject constructor(
                 dataManager.getAllLeagues()
                         .subscribeOn(subscriber.io())
                         .observeOn(subscriber.mainThread())
-                        .subscribe({ results ->
+                        .subscribe({ results->
                             if (!isViewAttached())
                                 return@subscribe
                             mvpView?.hideLoading()
-                            mvpView?.updateLeagueid(results)
+                            mvpView?.updateLeagueId(results)
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe
-
                             mvpView?.hideLoading()
                             mvpView?.showMessage(throwable.message!!)
                             Timber.e(throwable.message)

@@ -22,4 +22,6 @@ interface ApiHelper {
     fun getAllLeagues(): Single<Leagues>
 
     fun getMatchById(id: String): Flowable<Events>
+
+    fun getAllTeams(id: String): Flowable<TeamResponse>
 }

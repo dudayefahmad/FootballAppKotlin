@@ -8,6 +8,8 @@ import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchModule
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchModule
+import com.ahmaddudayef.footballclub.ui.teams.TeamFragment
+import com.ahmaddudayef.footballclub.ui.teams.TeamModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -28,4 +30,7 @@ abstract class FragmentProvider {
 
     @ContributesAndroidInjector(modules = [(MatchModule::class)])
     internal abstract fun provideMatchesFragmentFactory(): MatchFragment
+
+    @ContributesAndroidInjector(modules = [(TeamModule::class)])
+    internal abstract fun provideTeamFragmentFactory(): TeamFragment
 }

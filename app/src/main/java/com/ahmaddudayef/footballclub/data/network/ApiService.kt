@@ -30,4 +30,7 @@ interface ApiService {
 
     @GET("lookupevent.php")
     fun getMatchById(@Query("id") id: String): Flowable<Events>
+
+    @GET("lookup_all_teams.php")
+    fun getAllTeams(@Query("id") id:String) : Flowable<TeamResponse>
 }

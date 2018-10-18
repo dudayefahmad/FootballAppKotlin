@@ -39,4 +39,8 @@ class AppApiHelper @Inject constructor(
         return apiService.getMatchById(id)
     }
 
+    override fun getAllTeams(id: String): Flowable<TeamResponse> {
+        return apiService.getAllTeams(id)
+    }
+
 }

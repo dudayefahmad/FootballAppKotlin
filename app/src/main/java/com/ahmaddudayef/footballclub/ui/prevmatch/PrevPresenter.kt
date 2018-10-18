@@ -53,9 +53,7 @@ class PrevPresenter<V: PrevMvpView> @Inject constructor(
                             if (!isViewAttached())
                                 return@subscribe
                             mvpView?.hideLoading()
-                            if (results.leagues != null){
-                                mvpView?.updateLeagueid(results)
-                            }
+                            mvpView?.updateLeagueid(results)
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe

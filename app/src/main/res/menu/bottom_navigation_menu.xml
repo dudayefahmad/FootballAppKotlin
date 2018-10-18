@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_schedule_black_24dp"
         android:title="Matches" />
     <item
+        android:id="@+id/teams"
+        android:icon="@drawable/ic_football"
+        android:title="Teams" />
+    <item
         android:id="@+id/favorite_match"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:title="Favorite Match" />

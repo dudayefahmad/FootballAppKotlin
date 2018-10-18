@@ -53,7 +53,7 @@ class HomeActivity: BaseActivity(), HomeMvpView, HasSupportFragmentInjector {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        viewPager.offscreenPageLimit = 2
+        viewPager.offscreenPageLimit = 3
         viewPager.adapter = viewPagerAdapter
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
@@ -63,10 +63,15 @@ class HomeActivity: BaseActivity(), HomeMvpView, HasSupportFragmentInjector {
                     viewPager.setCurrentItem(0, true)
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.favorite_match -> {
+                R.id.teams -> {
                     viewPager.setCurrentItem(1, true)
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.favorite_match -> {
+                    viewPager.setCurrentItem(2, true)
+                    return@setOnNavigationItemSelectedListener true
+                }
+
             }
             false
         }
