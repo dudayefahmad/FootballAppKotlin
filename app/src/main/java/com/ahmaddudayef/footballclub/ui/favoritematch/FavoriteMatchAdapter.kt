@@ -1,11 +1,10 @@
-package com.ahmaddudayef.footballclub.ui.favorite
+package com.ahmaddudayef.footballclub.ui.favoritematch
 
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -13,20 +12,18 @@ import android.widget.TextView
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
 import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
-import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchItem
-import kotlinx.android.synthetic.main.activity_detail.view.*
 import org.jetbrains.anko.*
 
 /**
  * Created by Ahmad Dudayef on 9/27/2018.
  */
-class FavoriteAdapter(private var matchFavorit: List<EventsItem>): RecyclerView.Adapter<FavoriteAdapter.FavMatchHolder>() {
+class FavoriteMatchAdapter(private var matchFavorit: List<EventsItem>): RecyclerView.Adapter<FavoriteMatchAdapter.FavMatchHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavMatchHolder {
         val viewHolder = FavMatchHolder(FavMatchItem().createView(AnkoContext.Companion.create(parent.context, parent)))
         viewHolder.itemView.setOnClickListener{
             val position = viewHolder.adapterPosition
-            parent.context.startActivity< DetailMatchActivity>("match_detail" to matchFavorit[position])
+            parent.context.startActivity<DetailMatchActivity>("match_detail" to matchFavorit[position])
         }
         return viewHolder
     }

@@ -26,7 +26,7 @@ class TeamPresenter<V: TeamMvpView> @Inject constructor(
                             if (!isViewAttached())
                                 return@subscribe
                             mvpView?.hideLoading()
-                            mvpView?.updateListTeam(results.teams)
+                            results.teams?.let { mvpView?.updateListTeam(it) }
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe

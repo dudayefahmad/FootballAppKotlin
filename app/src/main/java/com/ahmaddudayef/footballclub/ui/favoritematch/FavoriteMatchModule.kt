@@ -1,4 +1,4 @@
-package com.ahmaddudayef.footballclub.ui.favorite
+package com.ahmaddudayef.footballclub.ui.favoritematch
 
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
@@ -10,10 +10,10 @@ import dagger.Provides
  * Created by Ahmad Dudayef on 9/27/2018.
  */
 @Module
-class FavoriteModule {
+class FavoriteMatchModule {
 
     @Provides
-    fun provideFavoriteMvpPresenter(presenter: FavoritePresenter<FavoriteMvpView>): FavoriteMvpPresenter<FavoriteMvpView>{
+    fun provideFavoriteMatchMvpPresenter(presenter: FavoriteMatchPresenter<FavoriteMatchMvpView>): FavoriteMatchMvpPresenter<FavoriteMatchMvpView>{
         return presenter
     }
 

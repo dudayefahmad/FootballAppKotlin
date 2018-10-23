@@ -91,7 +91,7 @@ class PrevMatchFragment : BaseFragment(), PrevMvpView, PrevMatchAdapter.Callback
         prevMatchAdapter.addItems(listTeam)
     }
 
-    override fun onMatchClick(eventsItem: EventsItem) {
+    override fun onPrevMatchClick(eventsItem: EventsItem) {
         startActivity<DetailMatchActivity>("match_detail" to eventsItem)
     }
 

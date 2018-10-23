@@ -105,7 +105,7 @@ class DetailMatchActivity : BaseActivity(), DetailMatchMvpView{
                 isFavorite = if (!isFavorite) {
                     presenter.addToFavorite(this, eventsItem)
                     !isFavorite
-                } else{
+                } else {
                     presenter.removeFromFavorite(this, eventsItem.idEvent)
                     !isFavorite
                 }
@@ -123,8 +123,8 @@ class DetailMatchActivity : BaseActivity(), DetailMatchMvpView{
     }
 
     private fun setFavorite() = if (isFavorite) {
-        menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp)
+        menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp)
     } else {
-        menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp)
+        menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_white_24dp)
     }
 }

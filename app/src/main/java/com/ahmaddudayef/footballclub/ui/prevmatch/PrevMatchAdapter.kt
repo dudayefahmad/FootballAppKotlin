@@ -13,7 +13,7 @@ class PrevMatchAdapter(private val events: MutableList<EventsItem>?):
         RecyclerView.Adapter<PrevMatchAdapter.PrevMatchHolder>() {
 
     interface Callback {
-        fun onMatchClick(eventsItem: EventsItem)
+        fun onPrevMatchClick(eventsItem: EventsItem)
     }
 
     private var callback: Callback? = null
@@ -63,6 +63,7 @@ class PrevMatchAdapter(private val events: MutableList<EventsItem>?):
             val item: EventsItem? = events?.get(position)
             if (item != null){
                 prevMatchItem.txtDatePrev.text = item.dateEvent
+                prevMatchItem.txtTimePrev.text = item.strTime.substring(0, 5)
                 prevMatchItem.txtHomeTeamPrev.text = item.strHomeTeam
                 prevMatchItem.txtAwayTeamPrev.text = item.strAwayTeam
                 if (item.intHomeScore.equals("null") && item.intAwayScore.equals("null")){
@@ -75,7 +76,7 @@ class PrevMatchAdapter(private val events: MutableList<EventsItem>?):
                 itemView.setOnClickListener {
                     val event = getItem(adapterPosition)
                     if (event != null){
-                        callback?.onMatchClick(event)
+                        callback?.onPrevMatchClick(event)
                     }
                 }
             }

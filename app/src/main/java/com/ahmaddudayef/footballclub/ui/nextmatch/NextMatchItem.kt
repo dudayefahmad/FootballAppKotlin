@@ -19,6 +19,8 @@ import org.jetbrains.anko.cardview.v7.cardView
 class NextMatchItem: AnkoComponent<ViewGroup> {
 
     lateinit var txtDateNext: TextView
+    lateinit var imgReminder: ImageView
+    lateinit var txtTimeNext: TextView
     lateinit var txtHomeTeamNext: TextView
     lateinit var txtHomeScoreNext: TextView
     lateinit var txtAwayTeamNext: TextView
@@ -34,7 +36,21 @@ class NextMatchItem: AnkoComponent<ViewGroup> {
                 orientation = LinearLayout.VERTICAL
                 padding = dip(8)
 
-                txtDateNext = textView {
+                relativeLayout{
+                    txtDateNext = textView {
+                        textColor = ContextCompat.getColor(ctx, R.color.colorPrimary)
+                    }.lparams(wrapContent, wrapContent) {
+                        centerHorizontally()
+                    }
+
+                    imgReminder = imageView {
+
+                    }.lparams(width = dip(30), height = dip(30)) {
+                        alignParentRight()
+                    }
+                }
+
+                txtTimeNext = textView {
                     textColor = ContextCompat.getColor(ctx, R.color.colorPrimary)
                     gravity = Gravity.CENTER
                 }.lparams(matchParent, wrapContent)

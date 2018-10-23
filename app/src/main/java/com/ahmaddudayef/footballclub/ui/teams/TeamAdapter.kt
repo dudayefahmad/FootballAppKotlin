@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.team.Team
-import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_teams.view.*
-import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Created by Ahmad Dudayef on 10/17/2018.

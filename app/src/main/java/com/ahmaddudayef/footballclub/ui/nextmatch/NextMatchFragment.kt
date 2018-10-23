@@ -92,7 +92,7 @@ class NextMatchFragment: BaseFragment(), NextMvpView, NextMatchAdapter.Callback 
         nextMatchAdapter.addItems(listTeam)
     }
 
-    override fun onMatchClick(eventsItem: EventsItem) {
+    override fun onNextMatchClick(eventsItem: EventsItem) {
         startActivity<DetailMatchActivity>("match_detail" to eventsItem)
     }
 

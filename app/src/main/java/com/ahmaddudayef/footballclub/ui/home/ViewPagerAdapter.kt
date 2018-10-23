@@ -3,10 +3,8 @@ package com.ahmaddudayef.footballclub.ui.home
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.ahmaddudayef.footballclub.ui.favorite.FavoriteFragment
+import com.ahmaddudayef.footballclub.ui.favorites.FavoriteFragment
 import com.ahmaddudayef.footballclub.ui.matches.MatchFragment
-import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
-import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
 import com.ahmaddudayef.footballclub.ui.teams.TeamFragment
 
 /**

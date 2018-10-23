@@ -3,6 +3,9 @@
     package="com.ahmaddudayef.footballclub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".FootballApplication"
@@ -25,8 +28,11 @@
         </activity>
         <activity
             android:name=".ui.detail.DetailMatchActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.detailteam.DetailTeamActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.detailteam.DetailTeamActivity" />
+        <activity android:name=".ui.searchMatch.SearchMatchActivity" />
+        <activity android:name=".ui.searchTeam.SearchTeamActivity" />
+        <activity android:name=".ui.detailplayer.DetailPlayerActivity"></activity>
     </application>
 
 </manifest>

@@ -1,48 +1,44 @@
-package com.ahmaddudayef.footballclub.ui.favorite
+package com.ahmaddudayef.footballclub.ui.favoriteteam
 
 import android.content.Context
 import android.util.Log
 import com.ahmaddudayef.footballclub.data.DataManager
 import com.ahmaddudayef.footballclub.data.db.database
-import com.ahmaddudayef.footballclub.data.db.entities.MatchEntity
-
+import com.ahmaddudayef.footballclub.data.db.entities.TeamEntity
 import com.ahmaddudayef.footballclub.ui.base.BasePresenter
-import com.ahmaddudayef.footballclub.utils.rx.AppSchedulerProvider
 import com.ahmaddudayef.footballclub.utils.rx.SchedulerProvider
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Created by Ahmad Dudayef on 9/27/2018.
+ * Created by Ahmad Dudayef on 10/23/2018.
  */
-class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
+class FavoriteTeamPresenter<V: FavoriteTeamMvpView> @Inject constructor(
         private val dataManager: DataManager,
         private val compositeDisposable: CompositeDisposable,
         private val subscriber: SchedulerProvider
-): BasePresenter<V>(dataManager, compositeDisposable, subscriber), FavoriteMvpPresenter<V>{
+): BasePresenter<V>(dataManager, compositeDisposable, subscriber), FavoriteTeamMvpPresenter<V> {
 
-    override fun getMatchFavorite(context: Context?): Single<List<MatchEntity>> {
-        lateinit var favoriteList: List<MatchEntity>
+    override fun getTeamFavorite(context: Context?): Single<List<TeamEntity>> {
+        lateinit var favoriteList: List<TeamEntity>
         context?.database?.use {
-            val result = select(MatchEntity.TABLE_MATCH)
-            val favorite = result.parseList(classParser<MatchEntity>())
+            val result = select(TeamEntity.TABLE_TEAM)
+            val favorite = result.parseList(classParser<TeamEntity>())
             favoriteList = favorite
         }
         return Single.just(favoriteList)
     }
 
-    override fun getNextMatch(context: Context?) {
+    override fun getTeam(context: Context?) {
         compositeDisposable.add(
-                getMatchFavorite(context)
+                getTeamFavorite(context)
                         .flattenAsFlowable { it }
                         .flatMap {
-                            dataManager.getMatchById(it.eventId.toString())
+                            dataManager.getTeamById(it.teamId.toString())
                         }
                         .subscribeOn(subscriber.io())
                         .observeOn(subscriber.mainThread())
@@ -50,8 +46,7 @@ class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
                             if (!isViewAttached())
                                 return@subscribe
                             Log.d("Masuk sini", "1")
-
-                            mvpView?.showMatchFavorite(results)
+                            mvpView?.showTeamFavorite(results)
                         }, { throwable ->
                             if (!isViewAttached())
                                 return@subscribe
@@ -62,6 +57,5 @@ class FavoritePresenter<V: FavoriteMvpView> @Inject constructor(
                         })
         )
     }
-
 
 }

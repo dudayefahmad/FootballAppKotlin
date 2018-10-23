@@ -2,9 +2,6 @@ package com.ahmaddudayef.footballclub.ui.teams
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import com.ahmaddudayef.flux.ui.home.tv.ItemOffsetDecoration
-import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.di.ApplicationContext
 import dagger.Module
 import dagger.Provides

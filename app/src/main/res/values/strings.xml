@@ -14,4 +14,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="team">Team</string>
+    <string name="title_team_name">Real Madrid</string>
+    <string name="title_team_years">2018</string>
+    <string name="title_stadium_name">Santiago Bernabeu</string>
+    <string name="title_team_logo">Team Logo</string>
+    <string name="search">Search</string>
+    <string name="weight_kg">Weight (Kg)</string>
+    <string name="height_m">Height (m)</string>
 </resources>

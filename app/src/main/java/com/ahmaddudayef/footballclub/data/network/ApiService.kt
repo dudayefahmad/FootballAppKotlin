@@ -1,7 +1,10 @@
 package com.ahmaddudayef.footballclub.data.network
 
 import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
+import com.ahmaddudayef.footballclub.data.network.model.player.FavoritePlayers
+import com.ahmaddudayef.footballclub.data.network.model.player.Players
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
+import com.ahmaddudayef.footballclub.data.network.model.searchmatch.SearchedMatches
 import com.ahmaddudayef.footballclub.data.network.model.team.TeamResponse
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -31,6 +34,21 @@ interface ApiService {
     @GET("lookupevent.php")
     fun getMatchById(@Query("id") id: String): Flowable<Events>
 
+    @GET("lookupteam.php")
+    fun getTeamById(@Query("id") id: String): Flowable<TeamResponse>
+
+    @GET("lookupplayer.php?")
+    fun getPlayerById(@Query("id") id: String): Flowable<FavoritePlayers>
+
     @GET("lookup_all_teams.php")
     fun getAllTeams(@Query("id") id:String) : Flowable<TeamResponse>
+
+    @GET("lookup_all_players.php")
+    fun getAllPlayers(@Query("id") id:String) : Flowable<Players>
+
+    @GET("searchevents.php")
+    fun searchMatches(@Query("e") query: String?) : Flowable<SearchedMatches>
+
+    @GET("searchteams.php")
+    fun searchClub(@Query("t") query: String?) : Flowable<TeamResponse>
 }

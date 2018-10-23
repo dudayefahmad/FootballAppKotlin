@@ -18,6 +18,7 @@ import org.jetbrains.anko.cardview.v7.cardView
 class PrevMatchItem: AnkoComponent<ViewGroup> {
 
     lateinit var txtDatePrev: TextView
+    lateinit var txtTimePrev: TextView
     lateinit var txtHomeTeamPrev: TextView
     lateinit var txtHomeScorePrev: TextView
     lateinit var txtAwayTeamPrev: TextView
@@ -34,6 +35,11 @@ class PrevMatchItem: AnkoComponent<ViewGroup> {
                 padding = dip(8)
 
                 txtDatePrev = textView {
+                    textColor = ContextCompat.getColor(ctx, R.color.colorPrimary)
+                    gravity = Gravity.CENTER
+                }.lparams(matchParent, wrapContent)
+
+                txtTimePrev = textView {
                     textColor = ContextCompat.getColor(ctx, R.color.colorPrimary)
                     gravity = Gravity.CENTER
                 }.lparams(matchParent, wrapContent)

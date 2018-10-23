@@ -1,7 +1,10 @@
 package com.ahmaddudayef.footballclub.data.network
 
 import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
+import com.ahmaddudayef.footballclub.data.network.model.player.FavoritePlayers
+import com.ahmaddudayef.footballclub.data.network.model.player.Players
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
+import com.ahmaddudayef.footballclub.data.network.model.searchmatch.SearchedMatches
 import com.ahmaddudayef.footballclub.data.network.model.team.TeamResponse
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -41,6 +44,26 @@ class AppApiHelper @Inject constructor(
 
     override fun getAllTeams(id: String): Flowable<TeamResponse> {
         return apiService.getAllTeams(id)
+    }
+
+    override fun getAllPlayers(id: String): Flowable<Players> {
+        return apiService.getAllPlayers(id)
+    }
+
+    override fun searchMatches(e: String?): Flowable<SearchedMatches> {
+        return apiService.searchMatches(e)
+    }
+
+    override fun searchCLub(t: String?): Flowable<TeamResponse> {
+        return apiService.searchClub(t)
+    }
+
+    override fun getTeamById(id: String): Flowable<TeamResponse> {
+        return apiService.getTeamById(id)
+    }
+
+    override fun getPlayerById(id: String): Flowable<FavoritePlayers> {
+        return apiService.getPlayerById(id)
     }
 
 }
