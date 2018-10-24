@@ -1,18 +1,15 @@
 package com.ahmaddudayef.footballclub.ui.nextmatch
 
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.support.v7.widget.RecyclerView
 import com.ahmaddudayef.footballclub.R.id.*
 import com.ahmaddudayef.footballclub.ui.home.HomeActivity
-import org.junit.Assert.*
-import org.junit.Before
+import com.ahmaddudayef.footballclub.ui.teams.TeamAdapter
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -35,17 +32,37 @@ class HomeActivityTest {
         delay()
         onView(withText("Italian Serie A")).perform(click())
         delay()
-        onView(withText("Juventus"))
-                .check(matches(isDisplayed()))
-        delay()
-        onView(withText("Juventus")).perform(click())
-        delay()
+        onView(withId(match_list_next)).perform(RecyclerViewActions.actionOnItemAtPosition<NextMatchAdapter.NextMatchHolder>(3, click()))
         onView(withId(favorite))
                 .check(matches(isDisplayed()))
         delay()
         onView(withId(favorite)).perform(click())
         delay()
-        pressBack()
+    }
+
+    @Test
+    fun testTeamBehaviour() {
+//        delay()
+//        onView(withId(bottomNavigationView)).check(matches(isDisplayed()))
+//        delay()
+//        onView(withId(bottomNavigationView)).perform(click())
+        delay()
+        onView(withId(teams)).check(matches(isDisplayed()))
+        delay()
+        onView(withId(teams)).perform(click())
+        delay()
+        onView(withId(spinnerLeague)).check(matches(isDisplayed()))
+        delay()
+        onView(withId(spinnerLeague)).perform(click())
+        delay()
+        onView(withText("Spanish La Liga")).perform(click())
+        delay()
+        onView(withId(team_list)).perform(RecyclerViewActions.actionOnItemAtPosition<TeamAdapter.TeamViewHolder>(3, click()))
+        onView(withId(favorite))
+                .check(matches(isDisplayed()))
+        delay()
+        onView(withId(favorite)).perform(click())
+        delay()
     }
 
     private fun delay(){

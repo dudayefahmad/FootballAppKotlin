@@ -5,19 +5,16 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.league.Leagues
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
 import com.ahmaddudayef.footballclub.ui.base.BaseFragment
 import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
-import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_prev_match.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -56,9 +53,9 @@ class PrevMatchFragment : BaseFragment(), PrevMvpView, PrevMatchAdapter.Callback
         presenter.getAllLeagues()
         presenter.getPrevScheduleList("4328")
 
-        match_list.layoutManager = linearLayoutManager
-        match_list.setHasFixedSize(true)
-        match_list.adapter = prevMatchAdapter
+        match_list_prev.layoutManager = linearLayoutManager
+        match_list_prev.setHasFixedSize(true)
+        match_list_prev.adapter = prevMatchAdapter
     }
 
     override fun updateLeagueid(leagues: Leagues) {
@@ -87,7 +84,7 @@ class PrevMatchFragment : BaseFragment(), PrevMvpView, PrevMatchAdapter.Callback
     }
 
     override fun updateList(listTeam: MutableList<EventsItem>) {
-        match_list.visibility = VISIBLE
+        match_list_prev.visibility = VISIBLE
         prevMatchAdapter.addItems(listTeam)
     }
 

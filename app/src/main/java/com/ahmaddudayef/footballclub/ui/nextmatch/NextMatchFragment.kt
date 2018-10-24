@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -20,7 +19,6 @@ import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_next_match.*
 import org.jetbrains.anko.support.v4.startActivity
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -55,9 +53,9 @@ class NextMatchFragment: BaseFragment(), NextMvpView, NextMatchAdapter.Callback 
         presenter.getAllLeagues()
         presenter.getNextScheduleList("4328")
 
-        match_list.layoutManager = linearLayoutManager
-        match_list.setHasFixedSize(true)
-        match_list.adapter = nextMatchAdapter
+        match_list_next.layoutManager = linearLayoutManager
+        match_list_next.setHasFixedSize(true)
+        match_list_next.adapter = nextMatchAdapter
     }
 
     override fun updateLeagueid(leagues: Leagues) {
@@ -87,7 +85,7 @@ class NextMatchFragment: BaseFragment(), NextMvpView, NextMatchAdapter.Callback 
 
     override fun updateList(listTeam: MutableList<EventsItem>) {
         Log.d("Data Match", listTeam.toString())
-        match_list.visibility = VISIBLE
+        match_list_next.visibility = VISIBLE
 
         nextMatchAdapter.addItems(listTeam)
     }
