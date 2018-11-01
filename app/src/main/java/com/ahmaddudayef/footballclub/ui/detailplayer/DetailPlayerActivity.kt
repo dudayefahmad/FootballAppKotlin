@@ -51,10 +51,10 @@ class DetailPlayerActivity : BaseActivity(), DetailPlayerMvpView {
                     scrollRange = appBarLayout.totalScrollRange
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(player.strPlayer)
+                    collapsingToolbarLayout.title = player.strPlayer
                     isShow = true
                 } else if (isShow) {
-                    collapsingToolbarLayout.setTitle(" ")//carefull there should a space between double quote otherwise it wont work
+                    collapsingToolbarLayout.title = " "//carefull there should a space between double quote otherwise it wont work
                     isShow = false
                 }
             }

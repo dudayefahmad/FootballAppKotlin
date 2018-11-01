@@ -28,4 +28,12 @@
         <item name="colorControlActivated">@android:color/white</item>
     </style>
 
+    <style name="AttributionsTheme" parent="AppTheme">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="searchEditTextTheme" parent="AppTheme">
+        <item name="colorAccent">@android:color/black</item>
+    </style>
+
 </resources>

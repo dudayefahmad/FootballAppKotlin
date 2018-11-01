@@ -1,6 +1,7 @@
 package com.ahmaddudayef.footballclub.ui.searchMatch
 
 import android.os.Bundle
+import android.support.v7.view.ContextThemeWrapper
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
@@ -8,9 +9,14 @@ import android.view.Menu
 import android.view.MenuItem
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
+import com.ahmaddudayef.footballclub.ui.about.AboutActivity
 import com.ahmaddudayef.footballclub.ui.base.BaseActivity
 import com.ahmaddudayef.footballclub.ui.detail.DetailMatchActivity
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchAdapter
+import com.franmontiel.attributionpresenter.AttributionPresenter
+import com.franmontiel.attributionpresenter.entities.Attribution
+import com.franmontiel.attributionpresenter.entities.Library
+import com.franmontiel.attributionpresenter.entities.License
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_search_match.*
 import org.jetbrains.anko.startActivity
@@ -108,6 +114,10 @@ class SearchMatchActivity : BaseActivity(), SearchMatchMvpView, PrevMatchAdapter
                     }
 
                 })
+            }
+
+            R.id.about -> {
+                startActivity(AboutActivity.getStartIntent(this))
             }
         }
         return super.onOptionsItemSelected(item)

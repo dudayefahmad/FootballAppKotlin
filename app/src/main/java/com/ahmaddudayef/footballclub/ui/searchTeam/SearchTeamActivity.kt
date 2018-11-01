@@ -2,6 +2,7 @@ package com.ahmaddudayef.footballclub.ui.searchTeam
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.view.ContextThemeWrapper
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
@@ -10,9 +11,14 @@ import android.view.Menu
 import android.view.MenuItem
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.team.Team
+import com.ahmaddudayef.footballclub.ui.about.AboutActivity
 import com.ahmaddudayef.footballclub.ui.base.BaseActivity
 import com.ahmaddudayef.footballclub.ui.detailteam.DetailTeamActivity
 import com.ahmaddudayef.footballclub.ui.teams.TeamAdapter
+import com.franmontiel.attributionpresenter.AttributionPresenter
+import com.franmontiel.attributionpresenter.entities.Attribution
+import com.franmontiel.attributionpresenter.entities.Library
+import com.franmontiel.attributionpresenter.entities.License
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_search_team.*
 import org.jetbrains.anko.startActivity
@@ -108,6 +114,10 @@ class SearchTeamActivity : BaseActivity(), SearchTeamMvpView, TeamAdapter.Callba
                     }
 
                 })
+            }
+
+            R.id.about -> {
+                startActivity(AboutActivity.getStartIntent(this))
             }
         }
         return super.onOptionsItemSelected(item)

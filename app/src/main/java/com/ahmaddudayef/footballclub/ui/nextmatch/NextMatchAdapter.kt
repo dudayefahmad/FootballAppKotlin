@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.ahmaddudayef.footballclub.R
 import com.ahmaddudayef.footballclub.data.network.model.schedule.Events
 import com.ahmaddudayef.footballclub.data.network.model.schedule.EventsItem
-import com.ahmaddudayef.footballclub.utils.ReminderUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_teams.view.*

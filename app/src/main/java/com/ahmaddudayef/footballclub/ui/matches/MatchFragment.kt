@@ -7,14 +7,20 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.support.v7.view.ContextThemeWrapper
 import android.support.v7.widget.SearchView
 import android.view.*
 
 import com.ahmaddudayef.footballclub.R
+import com.ahmaddudayef.footballclub.ui.about.AboutActivity
 import com.ahmaddudayef.footballclub.ui.base.BaseFragment
 import com.ahmaddudayef.footballclub.ui.nextmatch.NextMatchFragment
 import com.ahmaddudayef.footballclub.ui.prevmatch.PrevMatchFragment
 import com.ahmaddudayef.footballclub.ui.searchMatch.SearchMatchActivity
+import com.franmontiel.attributionpresenter.AttributionPresenter
+import com.franmontiel.attributionpresenter.entities.Attribution
+import com.franmontiel.attributionpresenter.entities.Library
+import com.franmontiel.attributionpresenter.entities.License
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -95,6 +101,10 @@ class MatchFragment : BaseFragment(), MatchMvpView {
                     }
 
                 })
+            }
+
+            R.id.about -> {
+                startActivity(AboutActivity.getStartIntent(context!!))
             }
         }
         return super.onOptionsItemSelected(item)

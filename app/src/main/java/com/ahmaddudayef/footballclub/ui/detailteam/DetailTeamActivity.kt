@@ -61,10 +61,10 @@ class DetailTeamActivity : BaseActivity(), DetailTeamMvpView, HasSupportFragment
                     scrollRange = appBarLayout.totalScrollRange
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(team.strTeam)
+                    collapsingToolbarLayout.title = team.strTeam
                     isShow = true
                 } else if (isShow) {
-                    collapsingToolbarLayout.setTitle(" ")//carefull there should a space between double quote otherwise it wont work
+                    collapsingToolbarLayout.title = " "//carefull there should a space between double quote otherwise it wont work
                     isShow = false
                 }
             }
